@@ -1,0 +1,88 @@
+
+<html>
+    <head>
+        <title>Formular</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="formular.css">
+    <script>
+        function validare() {
+            var is_ok = true;
+             if(!document.formular.nume.value.length || !document.formular.prenume.value.length || document.formular.facultate.selectedIndex == 0 )
+                is_ok=false;
+            if(!is_ok)
+                alert("Campuri incomplete");
+            return is_ok;
+        }
+        function afis_opt1() {
+            for (var i = 0; i < document.formular.optiune1.length; i++) {
+                if (document.formular.optiune1[i].checked) {
+                    var opt1_selectata = document.formular.optiune1[i].value;
+                }
+            }
+            return opt1_selectata;
+        }
+        function afisare() {
+            if(validare()) {
+                alert(formular.nume.value + " " + formular.prenume.value + "te asteptam la eveniment!")
+            }
+        }
+    </script>
+
+    </head>
+
+    <body onLoad="document.formular.nume.focus()">
+        <h3>Pentru a putea participa la eveniment, completati umatoarele campuri:</h3>
+        <div class = "container">
+        <form name="formular" method="post" onsubmit="return afisare()">
+        <table>
+            <div class = "row">
+                <div class = "col-25">
+                    <tr>
+                        <td>Numele:</td>
+                </div>
+                        <td><input type="text" name="nume" size="20" placeholder="Numele dumneavoastra..."></td>
+                     </tr>
+            </div>
+            <tr>
+                <td>Prenumele:</td>
+                <td><input type="text" name="prenume" size="20" placeholder="Prenumele dumneavoastra..."></td>
+            </tr>
+            <tr>
+                <td>Facultate</td>
+                <td>
+                <select name="facultate" size="1">
+                <option value="" selected></option>
+                <option value="f1">Universitatea Politehinica</option>
+                <option value="f2">Univeristatea de Matematica si Informatica</option>
+                <option value="f3">Universitatea de arhitectura</option>
+                <option value="f4">Facultatea de Medicina si Farmacie</option>
+                <option value="f5">ASE</option>
+                </select>
+                </td>
+            </tr>
+            <tr><td colspan="2"><hr color = "wheat"></td></tr>
+            <tr>
+                <td valign="top">Nivelul tau la acest sport: </td>
+                <td>
+                <input type="radio" name="optiune1" checked>Avansat<br>
+                <input type="radio" name="optiune1">Mediu<br>
+                <input type="radio" name="optiune1" value="MD3D">Incepator
+                </td>
+            </tr>
+            <tr><td colspan="2"><hr color="wheat"></td></tr>
+            <tr>
+                <td>Observatii:</td>
+                <td><textarea id="subject" name="obs" placeholder="Scrieti aici observatiile dumneavoastra..." style="height:100px"></textarea></td>
+            </tr>
+            <tr><td colspan="2"><hr color = "wheat"></td></tr>
+            <tr>
+                <td><input type="button" name="go" value="Inscriere" onclick="afisare()" class = "submit"></td>
+                <td><input type="reset" value="Reset" class = "submitReset"></td>
+                </tr>
+        </table>
+        </div>
+        </form>
+        <p id="rezultat"></p>
+    </body>
+
+</html>
